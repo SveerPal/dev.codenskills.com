@@ -1,3 +1,4 @@
 *.zip
-/adposthub/*
-adposthub/
+*.htaccess
+*.log
+/adposthub
