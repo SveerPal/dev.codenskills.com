@@ -2,10 +2,11 @@
 
 get_header();
 ?>
-<section class="content-list-sec">
+<section class="content-sec">
 	<div class="container">
 		<div class="row">
 			<main id="primary" class="site-main">
+			<?php woocommerce_breadcrumb();?>
 
 				<?php
 				while (have_posts()):

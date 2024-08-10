@@ -24,8 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li class="column simple-prod">
-	<div class="simple-wrap">
+<li <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -33,18 +32,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' );
-	?>
-	<?php
+
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
-	?>
-	<div class="item-img-wrap">			
-	
-	<?php
 	do_action( 'woocommerce_before_shop_loop_item_title' );
 
 	/**
@@ -52,12 +46,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
-	?>
-	
-	</div>
-	<div class="status">
-                                      
-	<?php
 	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
@@ -67,9 +55,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop_item_title' );
-	?>
-	</div>
-	<?php
+
 	/**
 	 * Hook: woocommerce_after_shop_loop_item.
 	 *
@@ -78,5 +64,4 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-	</div>
 </li>

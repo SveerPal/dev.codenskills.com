@@ -19,4 +19,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<!-- <ul class="latest-listings-box productss columns-<?php //echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>"> -->
+<ul class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">

@@ -12,7 +12,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 7.8.0
+ * @version 9.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -36,21 +36,18 @@ $wrapper_classes   = apply_filters(
 	)
 );
 ?>
-
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	
-	<div class="list-details-left">
-	<div class="pictures-box">
-				
-		
 	<div class="woocommerce-product-gallery__wrapper">
 		<?php
 		if ( $post_thumbnail_id ) {
 			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
 		} else {
-			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
-			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
-			$html .= '</div>';
+			$wrapper_classname = $product->is_type( 'variable' ) && ! empty( $product->get_available_variations( 'image' ) ) ?
+				'woocommerce-product-gallery__image woocommerce-product-gallery__image--placeholder' :
+				'woocommerce-product-gallery__image--placeholder';
+			$html              = sprintf( '<div class="%s">', esc_attr( $wrapper_classname ) );
+			$html             .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			$html             .= '</div>';
 		}
 
 		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
@@ -58,30 +55,4 @@ $wrapper_classes   = apply_filters(
 		do_action( 'woocommerce_product_thumbnails' );
 		?>
 	</div>
-		</div>
-		
-		<div class="listing-share">
-			<span>Share</span>
-			<ul>
-				<li> <a href="#"> <i class="fab fa-facebook-f"></i></a> </li>
-				<li> <a href="#"> <i class="fab fa-twitter"></i></a> </li>
-				<li> <a href="#"> <i class="fab fa-pinterest-square"></i></a> </li>
-			</ul>
-		</div>
-		<div class="tools">
-			<a href="#"> <i class="fas fa-paper-plane"></i>  Send to friend</a>
-			<a href="#"> <i class="fas fa-barcode"></i>   Listing #281</a>
-		</div>
-		<div class="protect">
-			<h4><i class="fas fa-umbrella"></i> <span>Buyer's protection</span></h4>
-			<ul>
-				<li> <i class="far fa-check-circle"></i> <span class="bold">Act locally</span>  to avoid scam</li>
-				<li> <i class="far fa-check-circle"></i> <span class="bold">Anonymous payment gateways</span>   are very unsafe</li>
-				<li> <i class="far fa-check-circle"></i> <span class="bold">Cheques payments</span>   are not recommended</li>
-			</ul>
-		</div>
-		
-		
-		</div>
 </div>
-	
