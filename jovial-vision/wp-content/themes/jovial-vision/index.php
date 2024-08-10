@@ -11,7 +11,7 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            
+              
             <div class="carousel-item active">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/banner.webp" class="d-block w-100"
                     alt="...">
