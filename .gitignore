@@ -11,3 +11,4 @@ jovial-vision/wp-content/uploads/wpcf7_uploads/.htaccess
 *.htaccess
 *.log
 /adposthub
+jovial-vision/wp-config.php
