@@ -19,7 +19,7 @@ get_header(); ?>
                     <h2 class="page-title">
                         <?php
                         /* translators: %s: search query. */
-                        printf(__('Search Results for: %s', 'yourthemename'), '<span>' . get_search_query() . '</span>');
+                        printf(__('Search Results for: %s', 'jv'), '<span>' . get_search_query() . '</span>');
                         ?>
                     </h2>
                 </header><!-- .page-header -->
@@ -54,11 +54,11 @@ get_header(); ?>
                 // If no results are found
                 ?>
                 <header class="page-header">
-                    <h1 class="page-title"><?php _e('Nothing Found', 'yourthemename'); ?></h1>
+                    <h1 class="page-title"><?php _e('Nothing Found', 'jv'); ?></h1>
                 </header><!-- .page-header -->
 
                 <div class="page-content">
-                    <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'yourthemename'); ?>
+                    <p><?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'jv'); ?>
                     </p>
                     <?php get_search_form(); ?>
                 </div><!-- .page-content -->
