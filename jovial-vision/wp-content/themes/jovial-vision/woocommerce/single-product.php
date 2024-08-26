@@ -20,6 +20,17 @@ if (!defined('ABSPATH')) {
 }
 
 get_header('shop'); ?>
+<section class="breadcrumb-sec" style="background: url(<?php echo site_url();?>/wp-content/uploads/2024/08/inner-banner.png);">
+	<div class="container">
+		 <div class="row">
+			 <div class="col-md-12">
+				 <div class="breadcrumb-wrap">
+					 <?php woocommerce_breadcrumb();?>
+				 </div>
+			 </div>
+		</div>
+	</div>
+</section>
 <section class="content-sec">
 	<div class="container">
 		<div class="row">

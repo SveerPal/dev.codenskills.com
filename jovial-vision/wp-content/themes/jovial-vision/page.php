@@ -2,7 +2,7 @@
 
 get_header();
 ?>
-<section class="breadcrumb-sec" style="background: url(http://localhost/jovial-vision/wp-content/uploads/2024/08/inner-banner.png);">
+<section class="breadcrumb-sec" style="background: url(<?php echo site_url();?>/wp-content/uploads/2024/08/inner-banner.png);">
 	<div class="container">
 		 <div class="row">
 			 <div class="col-md-12">
