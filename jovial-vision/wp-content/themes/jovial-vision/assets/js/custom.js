@@ -14,9 +14,15 @@ $('.screenshot_slider').owlCarousel({
             items: 1,
         },
         600: {
-            items: 3
+            items: 2
         },
-        1200: {
+        800: {
+            items: 2
+        },
+        900: {
+            items: 2
+        },
+        1000: {
             items: 3
         }
     }
@@ -37,9 +43,21 @@ $('#astrology').owlCarousel({
             items:1
         },
         600:{
+            items:2
+        },
+        700:{
             items:3
         },
         1000:{
+            items:4
+        },
+        1100:{
+            items:4
+        },
+        1200:{
+            items:4
+        },
+        1400:{
             items:5
         }
     }
@@ -59,10 +77,22 @@ $('#product').owlCarousel({
         0:{
             items:1
         },
-        600:{
-            items:3
+        400:{
+            items:1
+        },
+        500:{
+            items:2
         },
         1000:{
+            items:3
+        },
+        1100:{
+            items:3
+        },
+        1200:{
+            items:4
+        },
+        1300:{
             items:5
         }
     }

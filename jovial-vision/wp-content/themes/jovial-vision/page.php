@@ -2,12 +2,22 @@
 
 get_header();
 ?>
+<section class="breadcrumb-sec" style="background: url(http://localhost/jovial-vision/wp-content/uploads/2024/08/inner-banner.png);">
+	<div class="container">
+		 <div class="row">
+			 <div class="col-md-12">
+				 <div class="breadcrumb-wrap">
+					 <?php woocommerce_breadcrumb();?>
+				 </div>
+			 </div>
+		</div>
+	</div>
+</section>
+
 <section class="content-sec">
 	<div class="container">
 		<div class="row">
 			<main id="primary" class="site-main">
-			<?php woocommerce_breadcrumb();?>
-
 				<?php
 				while (have_posts()):
 					the_post();
@@ -22,7 +32,7 @@ get_header();
 				endwhile; // End of the loop.
 				?>
 
-			</main><!-- #main -->
+			</main>
 		</div>
 	</div>
 </section>

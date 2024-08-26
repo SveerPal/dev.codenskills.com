@@ -37,10 +37,53 @@
                         <div class="top-left">
                             <ul>
                                 <?php if(get_field('phone','option') ) { ?>
-                                <li> <span>Talk to Astrologers :</span> <a href="tel:<?php echo get_field('phone','option');?>"><?php echo get_field('phone','option');?></a></li>
+                                <li> <span>Talk to Astrologers :</span> <i class="fas fa-phone-alt"></i> <a href="tel:<?php echo get_field('phone','option');?>"><?php echo get_field('phone','option');?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>
+                        <div class="right-menu">
+                        <ul>
+                            <li>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                        viewBox="0 0 30 30" fill="none">
+                                        <path
+                                            d="M13.75 23.75C19.2728 23.75 23.75 19.2728 23.75 13.75C23.75 8.22715 19.2728 3.75 13.75 3.75C8.22715 3.75 3.75 8.22715 3.75 13.75C3.75 19.2728 8.22715 23.75 13.75 23.75Z"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M26.25 26.25L20.8125 20.8125" stroke="#1E1E1E"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></span>
+                            </li>
+                            <li><a href="<?php echo site_url();?>/my-account"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                        viewBox="0 0 30 30" fill="none">
+                                        <path
+                                            d="M25 26.25V23.75C25 22.4239 24.4732 21.1521 23.5355 20.2145C22.5979 19.2768 21.3261 18.75 20 18.75H10C8.67392 18.75 7.40215 19.2768 6.46447 20.2145C5.52678 21.1521 5 22.4239 5 23.75V26.25"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path
+                                            d="M15 13.75C17.7614 13.75 20 11.5114 20 8.75C20 5.98858 17.7614 3.75 15 3.75C12.2386 3.75 10 5.98858 10 8.75C10 11.5114 12.2386 13.75 15 13.75Z"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                    </svg></a></li>
+                            <li>
+                                <a href="<?php echo site_url();?>/cart"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                        viewBox="0 0 30 30" fill="none">
+                                        <path
+                                            d="M11.25 27.5C11.9404 27.5 12.5 26.9404 12.5 26.25C12.5 25.5596 11.9404 25 11.25 25C10.5596 25 10 25.5596 10 26.25C10 26.9404 10.5596 27.5 11.25 27.5Z"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path
+                                            d="M25 27.5C25.6904 27.5 26.25 26.9404 26.25 26.25C26.25 25.5596 25.6904 25 25 25C24.3096 25 23.75 25.5596 23.75 26.25C23.75 26.9404 24.3096 27.5 25 27.5Z"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path
+                                            d="M1.25 1.25H6.25L9.6 17.9875C9.71431 18.563 10.0274 19.0799 10.4844 19.4479C10.9415 19.8158 11.5134 20.0112 12.1 20H24.25C24.8366 20.0112 25.4085 19.8158 25.8656 19.4479C26.3226 19.0799 26.6357 18.563 26.75 17.9875L28.75 7.5H7.5"
+                                            stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                    </svg> <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span></a>
+                            </li>
+                        </ul>
+                    </div>
                         <div class="right-left">
                             <ul class="top-bar-content">
                                 <?php if(get_field('email','option') ) { ?>

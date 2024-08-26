@@ -24,7 +24,7 @@ get_header('shop'); ?>
 	<div class="container">
 		<div class="row">
 			<main id="primary" class="site-main"></main>
-
+<!-- 
 			<?php
 			/**
 			 * woocommerce_before_main_content hook.
@@ -33,7 +33,7 @@ get_header('shop'); ?>
 			 * @hooked woocommerce_breadcrumb - 20
 			 */
 			do_action('woocommerce_before_main_content');
-			?>
+			?> -->
 
 			<?php while (have_posts()): ?>
 				<?php the_post(); ?>

@@ -113,59 +113,6 @@
     </div>
 </section>
 
-<!-- <section class="why-sec">
-        <div class="container" bis_skin_checked="1">
-            <div class="row" bis_skin_checked="1">
-                <div class="col-md-12" bis_skin_checked="1">
-                    <div class="why-wrap" bis_skin_checked="1">
-                        <div class="section-title" bis_skin_checked="1">
-                             <h2>Why Us? </h2> 
-                        </div>
-                        <div class="row" bis_skin_checked="1">
-                            <div class="col-md-3">
-                                <div class="card text-center text-dark  rounded p-3">
-                                    <div class="card-body">
-                                        <p><i class="fas fa-user-tie fs-1"></i></p>
-                                        <h3 class="card-text counter d-inline" data-target="95"> 0 </h3>+
-                                        <p class="card-title  fs-5"> Clients</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card text-center text-dark  rounded p-3">
-                                    <div class="card-body">
-                                        <p><i class="fas fa-users fs-1"></i></p>
-                                        <h3 class="card-text counter d-inline" data-target="110"> 0 </h3>+
-                                        <p class="card-title  fs-5">Horoscopes </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card text-center text-dark  rounded p-3">
-                                    <div class="card-body">
-                                        <p><i class="fas fa-star fs-1"></i></p>
-                                        <i class="fa-solid fa-star"></i>
-                                        <h3 class="card-text counter d-inline" data-target="200"> 0 </h3>+
-                                        <p class="card-title  fs-5"> Astrologers</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card text-center text-dark  rounded p-3">
-                                    <div class="card-body">
-                                        <p><i class="fas fa-briefcase fs-1"></i></p>
-                                        <h3 class="card-text counter d-inline" data-target="200"> 0 </h3>+
-                                        <p class="card-title  fs-5"> Services</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
 <!-- bg img section start here -->
 <section class="bg-img-sec">
@@ -194,14 +141,15 @@
                 <div class="about1-wrap">
                     <div class="section-title">
                         <h2><?php echo get_the_title(2); ?></h2>
+                        <div class="about1-dis">
                         <p> <?php
-                        // $my_postid = 2;//This is page id or post id
                         $content_post = get_post(2);
                         $content = $content_post->post_content;
                         $content = apply_filters('the_content', $content);
                         $content = str_replace(']]>', ']]&gt;', $content);
                         echo substr($content, 0, 1300);
                         ?>...</p>
+                        </div>
 
 
                         <a class="btn-style-1 text-left" href="<?php the_permalink(2) ?>">Read More</a>
@@ -369,7 +317,7 @@
                                     ?>
 
                                     <div class="item">
-                                        <div class="products">
+                                        <div class="card  products">
                                             <div class="al-product-image">
                                                 <figure>
                                                     <a href="<?php the_permalink(); ?>">
@@ -383,7 +331,8 @@
                                                     </a>
                                                 </figure>
                                             </div>
-                                            <div class="pro-info">
+                                            <div class="card-body">
+                                                <div class="pro-info">
                                                 <h2><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
                                             </div>
                                             <div class="productitem-price">
@@ -398,8 +347,9 @@
                                                     </span>
                                                 <?php } ?>
                                             </div>
+                                            </div>
 
-                                            <div class="cart-btn">
+                                            <div class=" card-footer cart-btn ">
                                                 <!-- <button>Add To Cart</button> -->
                                                 <?php woocommerce_template_loop_add_to_cart(); ?>
 

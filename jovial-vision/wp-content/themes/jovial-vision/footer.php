@@ -2,7 +2,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="footer-info">
                     <figure><a href="<?php echo site_url(); ?>"><img
                                 src="<?php echo get_template_directory_uri(); ?>/assets/images/footer-logo.png"
@@ -10,7 +10,7 @@
                     <p><?php echo get_field('footer_content', 'option'); ?></p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
                     <h3 class="footer-heading">Services</h3>
                     <ul>
@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="footer-menu ">
                     <h3 class="footer-heading">Popular Products</h3>
                     <ul>
@@ -73,7 +73,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div class="footer-info">
                     <h3 class="footer-heading">Contact Us</h3>
                     <?php if (get_field('phone', 'option')) { ?>
