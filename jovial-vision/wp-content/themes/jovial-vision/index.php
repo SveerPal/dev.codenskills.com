@@ -142,13 +142,13 @@
                     <div class="section-title">
                         <h2><?php echo get_the_title(2); ?></h2>
                         <div class="about1-dis">
-                        <p> <?php
-                        $content_post = get_post(2);
-                        $content = $content_post->post_content;
-                        $content = apply_filters('the_content', $content);
-                        $content = str_replace(']]>', ']]&gt;', $content);
-                        echo substr($content, 0, 1300);
-                        ?>...</p>
+                            <p> <?php
+                            $content_post = get_post(2);
+                            $content = $content_post->post_content;
+                            $content = apply_filters('the_content', $content);
+                            $content = str_replace(']]>', ']]&gt;', $content);
+                            echo substr($content, 0, 1300);
+                            ?>...</p>
                         </div>
 
 
@@ -333,20 +333,21 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="pro-info">
-                                                <h2><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
-                                            </div>
-                                            <div class="productitem-price">
-                                                <?php if ($product_type == 'simple') { ?>
-                                                    <?php if ($product->get_sale_price()) { ?>
-                                                        <span
-                                                            class="price-compare-single"><?php echo get_woocommerce_currency_symbol() . ' ' . number_format($product->get_regular_price(), 2); ?></span>
+                                                    <h2><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a>
+                                                    </h2>
+                                                </div>
+                                                <div class="productitem-price">
+                                                    <?php if ($product_type == 'simple') { ?>
+                                                        <?php if ($product->get_sale_price()) { ?>
+                                                            <span
+                                                                class="price-compare-single"><?php echo get_woocommerce_currency_symbol() . ' ' . number_format($product->get_regular_price(), 2); ?></span>
+                                                        <?php } ?>
+                                                        <span class="money" data-price="">
+                                                            <?php echo get_woocommerce_currency_symbol(); ?>
+                                                            <?php echo $product->get_sale_price() ? number_format($product->get_sale_price(), 2) : number_format($product->get_regular_price(), 2); ?>
+                                                        </span>
                                                     <?php } ?>
-                                                    <span class="money" data-price="">
-                                                        <?php echo get_woocommerce_currency_symbol(); ?>
-                                                        <?php echo $product->get_sale_price() ? number_format($product->get_sale_price(), 2) : number_format($product->get_regular_price(), 2); ?>
-                                                    </span>
-                                                <?php } ?>
-                                            </div>
+                                                </div>
                                             </div>
 
                                             <div class=" card-footer cart-btn ">
@@ -372,7 +373,21 @@
     </div>
 </section>
 <!-- productssection end here -->
-
+<script>
+    function youTubeThumb(url, size) {
+        if (url === null) {
+            return '';
+        }
+        size = (size === null) ? 'big' : size;
+        results = url.match('[\\?&]v=([^&#]*)');
+        video = (results === null) ? url : results[1];
+        console.log(video)
+        if (size === 'small') {
+            return 'http://img.youtube.com/vi/' + video + '/2.jpg';
+        }
+        return 'http://img.youtube.com/vi/' + video + '/0.jpg';
+    }
+</script>
 <!-- Latest videos section start here -->
 <section class="blog-sec latest-videos-sec"
     style="background: url(<?php echo get_template_directory_uri(); ?>/assets/images/bg8.webp) no-repeat center;">
@@ -399,15 +414,26 @@
                         while ($query->have_posts()):
                             $query->the_post();
                             ?>
-                            <div class="col-md-4">
-                                <div class="blog">
-                                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/nyQAo2EFo-w"
+                            <div class="col-md-4" onclick="playVideo('yt-<?php echo get_the_id(); ?>','<?php echo get_the_excerpt(); ?>')" url="<?php echo get_the_excerpt(); ?>">
+
+                                <!-- <iframe width="100%" height="300" src="https://www.youtube.com/embed/nyQAo2EFo-w"
                                         title="Vedic Switchwords for weight loss | Weight loss tips | Jovial vision"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                </div>
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                                
+                                    <img id="yt-<?php echo get_the_id(); ?>" src="" />
+                                
                             </div>
+
+                            <script>
+                                //Example of usage:
+                                //small,big
+
+                                var thumb = youTubeThumb('<?php echo get_the_excerpt(); ?>', '');
+                                document.querySelector('#yt-<?php echo get_the_id(); ?>').setAttribute('src', thumb)
+                                console.log(thumb);
+                            </script>
                             <?php
 
                         endwhile;
