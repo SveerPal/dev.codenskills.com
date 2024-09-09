@@ -1,4 +1,5 @@
 *.zip
-/jovial-vision/wp-content/plugins
+
+/jovial-vision/wp-content/plugins/advanced-custom-fields
 
 /adposthub
