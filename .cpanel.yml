@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/codensk1/dev.codenskills.com/
+    - /bin/cp -R $DEPLOYPATH
