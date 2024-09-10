@@ -5,4 +5,4 @@ jovial-vision/wp-content/uploads/*
 *.htaccess
 *.log
 /adposthub
-*-config.php
+wp-config.php
