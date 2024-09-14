@@ -100,30 +100,151 @@ function cf7_booking_addon_settings_page() {
 // Register settings
 add_action('admin_init', 'cf7_booking_addon_register_settings');
 function cf7_booking_addon_register_settings() {
-    register_setting('cf7_booking_addon_options_group', 'cf7_booking_addon_option');
+    // Register settings
+    register_setting('cf7_booking_addon_options_group', 'cf7_booking_amount');
+    register_setting('cf7_booking_addon_options_group', 'cf7_booking_sandbox');
+    // Payment Gateway Settings
+    register_setting('cf7_booking_addon_options_group', 'cf7_payment_gateways');
+    register_setting('cf7_booking_addon_options_group', 'cf7_payment_keys');
+    register_setting('cf7_booking_addon_options_group', 'cf7_payment_webhooks');
     
+    // Add settings section
     add_settings_section(
         'cf7_booking_addon_section',
-        'Settings',
+        'General Settings',
         'cf7_booking_addon_section_callback',
         'cf7-booking-addon'
     );
 
+    // Add settings fields
     add_settings_field(
-        'cf7_booking_addon_field',
-        'Custom Option',
-        'cf7_booking_addon_field_callback',
+        'cf7_booking_amount',
+        'Amount',
+        'cf7_booking_amount_callback',
         'cf7-booking-addon',
         'cf7_booking_addon_section'
     );
+
+    add_settings_field(
+        'cf7_booking_sandbox',
+        'Sandbox Mode',
+        'cf7_booking_sandbox_callback',
+        'cf7-booking-addon',
+        'cf7_booking_addon_section'
+    );
+
+    
+
+    // Payment Gateway settings
+    add_settings_section(
+        'cf7_payment_gateways_section',
+        'Payment Gateways Settings',
+        'cf7_payment_gateways_section_callback',
+        'cf7-booking-addon'
+    );
+
+    add_settings_field(
+        'cf7_payment_gateways',
+        'Payment Gateways',
+        'cf7_payment_gateways_callback',
+        'cf7-booking-addon',
+        'cf7_payment_gateways_section'
+    );
+
+    add_settings_field(
+        'cf7_payment_keys',
+        'Payment Details',
+        'cf7_payment_keys_callback',
+        'cf7-booking-addon',
+        'cf7_payment_gateways_section'
+    );
+    
 }
 
+// Section callback
 function cf7_booking_addon_section_callback() {
     echo '<p>Customize your Contact Form 7 Booking Addon settings below.</p>';
 }
 
-function cf7_booking_addon_field_callback() {
-    $option = get_option('cf7_booking_addon_option');
-    echo '<input type="text" name="cf7_booking_addon_option" value="' . esc_attr($option) . '" />';
+// Amount field callback
+function cf7_booking_amount_callback() {
+    $amount = get_option('cf7_booking_amount');
+    echo '<input type="text" name="cf7_booking_amount" value="' . esc_attr($amount) . '" class="regular-text" />';
 }
+
+// Sandbox Mode field callback
+function cf7_booking_sandbox_callback() {
+    $sandbox = get_option('cf7_booking_sandbox');
+    $checked = $sandbox ? 'checked' : '';
+    echo '<input type="checkbox" name="cf7_booking_sandbox" value="1" ' . $checked . ' />';
+    echo '<label for="cf7_booking_sandbox"> Enable Sandbox Mode</label>';
+}
+
+
+
+// Payment Gateways section callback
+function cf7_payment_gateways_section_callback() {
+    echo '<p>Configure the payment gateways, their API keys, and webhook URLs below.</p>';
+}
+
+// Payment Gateways field callback
+function cf7_payment_gateways_callback() {
+    $gateways = get_option('cf7_payment_gateways', array());
+    $gateways = is_array($gateways) ? $gateways : array();
+    $options = array('stripe' => 'Stripe', 'paypal' => 'PayPal', 'payumoney' => 'PayUMoney', 'razorpay' => 'Razorpay');
+
+    foreach ($options as $key => $label) {
+        $checked = in_array($key, $gateways) ? 'checked' : '';
+        echo '<input type="checkbox" name="cf7_payment_gateways[]" value="' . esc_attr($key) . '" ' . $checked . ' />';
+        echo '<label for="cf7_payment_gateways_' . esc_attr($key) . '"> ' . esc_html($label) . '</label><br>';
+    }
+}
+
+// API Keys field callback
+// API Keys field callback
+function cf7_payment_keys_callback() {
+    $keys = get_option('cf7_payment_keys', array());
+    $keys = is_array($keys) ? $keys : array();
+    
+    $webhooks = get_option('cf7_payment_webhooks', array());
+    $webhooks = is_array($webhooks) ? $webhooks : array();
+    
+    $gateways = array(
+        'stripe' => 'Stripe',
+        'paypal' => 'PayPal',
+        'payumoney' => 'PayUMoney',
+        'razorpay' => 'Razorpay'
+    );
+
+    foreach ($gateways as $key => $label) {
+        echo '<h3>' . esc_html($label) . '</h3>';
+        
+        echo '<table class="form-table">';
+        echo '<tbody>';
+        
+        // Sandbox API Key
+        echo '<tr>';
+        echo '<th scope="row"><label for="' . esc_attr($key) . '_sandbox_key">Sandbox API Key:</label></th>';
+        echo '<td><input type="text" name="cf7_payment_keys[' . esc_attr($key) . '][sandbox]" value="' . esc_attr($keys[$key]['sandbox'] ?? '') . '" class="regular-text" /></td>';
+        echo '</tr>';
+        
+        // Production API Key
+        echo '<tr>';
+        echo '<th scope="row"><label for="' . esc_attr($key) . '_production_key">Production API Key:</label></th>';
+        echo '<td><input type="text" name="cf7_payment_keys[' . esc_attr($key) . '][production]" value="' . esc_attr($keys[$key]['production'] ?? '') . '" class="regular-text" /></td>';
+        echo '</tr>';
+        
+        // Webhook URL
+        echo '<tr>';
+        echo '<th scope="row"><label for="' . esc_attr($key) . '_webhook_url">Webhook URL:</label></th>';
+        echo '<td><input type="text" name="cf7_payment_webhooks[' . esc_attr($key) . ']" value="' . esc_attr($webhooks[$key] ?? '') . '" class="regular-text" /></td>';
+        echo '</tr>';
+        
+        echo '</tbody>';
+        echo '</table>';
+    }
+}
+
+
+
 ?>
