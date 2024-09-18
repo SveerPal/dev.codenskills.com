@@ -1,0 +1,42 @@
+{
+    "name": "yashvirpal/cf7-booking-addon",
+    "description": "A booking addon for Contact Form 7 with multiple payment gateways.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Yashvir Pal",
+            "email": "yashveersoftwere06@gmail.com",
+            "homepage": "https://yashvirpal.com"
+        }
+    ],
+    "require": {
+        "paypal/rest-api-sdk-php": "^1.14",
+        "stripe/stripe-php": "^7.0",
+        "razorpay/razorpay": "^2.8"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "payu/web-sdk-php",
+                "version": "dev-main",
+                "source": {
+                    "url": "https://github.com/payu-intrepos/web-sdk-php",
+                    "type": "git",
+                    "reference": "main"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "PayU\\": "src/"
+                    }
+                }
+            }
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CF7BookingAddon\\": "src/"
+        }
+    }
+}
