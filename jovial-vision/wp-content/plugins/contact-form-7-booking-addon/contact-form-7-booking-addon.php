@@ -47,7 +47,7 @@ function cf7_booking_addon_create_table()
         date date DEFAULT NULL,
         time time DEFAULT NULL,
         payment varchar(100) DEFAULT NULL,
-        payment_type varchar(100) DEFAULT NULL,
+        payment_method varchar(100) DEFAULT NULL,
         form_id bigint(20) NOT NULL,
         status varchar(100) DEFAULT 'pending',
         created_at datetime DEFAULT CURRENT_TIMESTAMP,
